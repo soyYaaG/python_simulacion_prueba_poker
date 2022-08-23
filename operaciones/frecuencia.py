@@ -31,8 +31,3 @@ class Frecuencia:
             resultado += ((fr_observada[tipo_mano] - fr_esperada[tipo_mano]) ** 2) / fr_esperada[tipo_mano]
 
         return resultado
-
-    
-    @staticmethod
-    def frecuencia() -> float:
-        pass
