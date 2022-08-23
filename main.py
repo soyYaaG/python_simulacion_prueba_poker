@@ -4,6 +4,7 @@ from prettytable import PrettyTable
 from operaciones.mano import Mano
 from operaciones.probabilidad import Probabilidad
 from operaciones.frecuencia import Frecuencia, DICCIONARIO_BASE
+from scipy.stats import chi2
 
 
 def clear() -> None:
@@ -25,7 +26,7 @@ def header() -> None:
 def opciones() -> int:
     print()
     print('1) Generar números pseudoaleatorios y procesar.')
-    print('2) Leer archivo con números pseudoaleatorios y procesar.')
+    print('2) Leer archivo (.txt) con números pseudoaleatorios y procesar.')
     print('3) Salir.')
     print()
     return int(input('Seleccione una opción: '))
@@ -84,14 +85,33 @@ def procesar(lista_numeros: list) -> None:
         mano: Mano = Mano(numero)
         fr_observada[mano.obtener().name] += 1;
 
-    fr_observada_2: dict = Frecuencia.frecuencia_observada(fr_esperada, fr_observada)
-
     tabla.field_names: list = ['Tipo de Mano', 'Fr Observada', 'Fr Esperada', 'Probabilidad']
     for tipo_mano in DICCIONARIO_BASE:
-        tabla.add_row([tipo_mano, fr_observada[tipo_mano], fr_esperada[tipo_mano], p[tipo_mano]])
+        tabla.add_row([tipo_mano, fr_observada[tipo_mano], f'{fr_esperada[tipo_mano]:.5f}', p[tipo_mano]])
 
 
     print(tabla.get_string(sortby='Fr Esperada', reversesort=True))
+    print()
+
+    alpha: float = 0.05
+    grado_liberta: int = len(DICCIONARIO_BASE.keys()) - 1
+    chi_cuadrado_teorico: dict = Frecuencia.chi_cuadrado_teorico(fr_esperada, fr_observada)
+    chi_cuadrado = chi2.ppf(q = (1 - alpha), df = 6)
+    print('Alpha:', alpha)
+    print('Grado de liberta:', grado_liberta)
+    print(f'Valor de Chi Cuadrado teórico: {chi_cuadrado_teorico:.5f}')
+    print(f'Valor de Chi Cuadrado: {chi_cuadrado:.5f}')
+    print()
+    print()
+
+    if (chi_cuadrado_teorico < chi_cuadrado):
+        print('-'*45)
+        print(' Los números están distribuidos uniformente. ')
+        print('-'*45)
+    else:
+        print('-'*48)
+        print(' Los números no están distribuidos uniformente. ')
+        print('-'*48)
 
 
 def run() -> None:

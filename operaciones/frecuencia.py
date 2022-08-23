@@ -24,7 +24,7 @@ class Frecuencia:
 
 
     @staticmethod
-    def frecuencia_observada(fr_esperada: dict, fr_observada: dict) -> float:
+    def chi_cuadrado_teorico(fr_esperada: dict, fr_observada: dict) -> float:
         resultado: float = 0
 
         for tipo_mano in DICCIONARIO_BASE.keys():
