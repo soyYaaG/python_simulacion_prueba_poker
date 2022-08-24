@@ -31,7 +31,7 @@ class Mano:
 
         `quintilla`: Todos las 5 cartas (números) son iguales.
         `poker`: 4 de las 5 cartas (números) son iguales.
-        `full`: 3 (tercia) y 2 (par) cartas (números) son iguales.
+        `full`: 3 (tercia) y 2 (1 par) cartas (números) son iguales.
         `tercia`: 3 de las 5 cartas (números) son iguales.
         `dos_pares`: 2 y 2 de las 5 cartas (números) son iguales.
         `par`: 2 de las 5 cartas (números) son iguales.
