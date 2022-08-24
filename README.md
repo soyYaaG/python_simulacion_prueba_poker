@@ -8,11 +8,17 @@ ${H_1}$ los números NO están distibuidos uniformemente.
 Se utiliza para analizar la frecuencia con la que se repiten los dígitos en números aleatorios individuales. Por ejemplo, si nos ocupamos de números aleatorios de cinco dígitos (cómo si fuera una mano del juego de poker) y clarificarlos como:
 
 $${QUINTILLA:} \frac{10*1*1*1*1}{10^5} \dbinom{5}{5} = 0.00010$$
+
 $${POKER:} \frac{10*9*1*1*1}{10^5} \dbinom{5}{4} = 0.00450$$
+
 $${FULL:} \frac{10*9*1*1*1}{10^5} \dbinom{5}{3} \dbinom{2}{2} = 0.00900$$
+
 $${TERCIA:} \frac{10*9*8*1*1}{10^5} \dbinom{5}{3} = 0.07200$$
+
 $${DOS\_PARES:} \frac{1}{2} \frac{10*9*7*1*1}{10^5} \dbinom{5}{2} \dbinom{3}{2} = 0.10800$$
+
 $${PAR:} \frac{10*9*8*7*1}{10^5} \dbinom{5}{2} = 0.50400$$
+
 $${TODOS\_DIFERENTES:} \frac{10*9*8*7*6}{10^5} = 0.30240$$
 
 Por supuesto, el número de esas combinaciones que se pueden dar depende del número de dígitos que constituyen cada uno de los números aleatorios.
