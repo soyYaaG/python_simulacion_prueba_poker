@@ -98,7 +98,7 @@ def procesar(lista_numeros: list) -> None:
     chi_cuadrado_teorico: dict = Frecuencia.chi_cuadrado_teorico(fr_esperada, fr_observada)
     chi_cuadrado = chi2.ppf(q = (1 - alpha), df = 6)
     print('Alpha:', alpha)
-    print('Grado de liberta:', grado_liberta)
+    print('Grado de libertad:', grado_liberta)
     print(f'Valor de Chi Cuadrado teórico: {chi_cuadrado_teorico:.5f}')
     print(f'Valor de Chi Cuadrado: {chi_cuadrado:.5f}')
     print()
